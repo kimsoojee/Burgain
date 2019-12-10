@@ -1,0 +1,35 @@
+.entryModal{
+  .modal-dialog {
+    // max-height: 100%;
+    margin: 0;
+    height: 100%;
+    min-width: 100%;
+    .modal-content {
+      border: none;
+      border-radius: 0;
+      height: auto;
+      min-height: 100%;
+      .modal-body{
+        width: 60%;
+        margin:20% auto;
+        .logoImage{
+          padding: 2vw 0;
+          img {
+            width: 40vw;
+          }
+        }
+        h2,h5,.logoImage,.buttons{
+          text-align: center;
+        }
+        .buttons{
+          button{
+            width: 40%;
+            margin: 0 1vw ;
+            background-color: grey;
+            border: none;
+          }
+        }
+      }
+    }
+  }
+}

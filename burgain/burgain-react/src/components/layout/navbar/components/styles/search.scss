@@ -1,0 +1,23 @@
+.search-outbox {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0 1rem;
+  .input-group {
+    input {
+      border: 1px solid black ;
+      border-radius: 2px;
+    }
+    .input-group-append {
+      button{
+        border: 1px solid black;
+        background: #801f24;
+        color: white;
+        // &:hover {
+        //   background: rgb(196, 196, 247);
+        //   border: 1px solid black;
+        // }
+      }
+    }
+  }
+}
