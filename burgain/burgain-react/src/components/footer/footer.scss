@@ -1,0 +1,14 @@
+footer {
+  min-width: 700px;
+  background-color: #801f24;
+  display: flex;
+  justify-content: space-around;
+  .col{
+    width: 10rem;
+    padding: 0.5rem;
+    color: white;
+    a {
+      color: white;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.card {
+  height: 100%;
+  .link{
+    text-decoration-line: none;
+    height: 100%;
+    .card-title{
+      font-size: 17px;
+      color: black;
+    }
+    .card-subtitle{
+      font-size: 14px;
+      color: rgb(80, 80, 80)
+    }
+  }
+}

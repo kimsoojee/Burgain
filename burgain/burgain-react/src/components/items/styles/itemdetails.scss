@@ -1,0 +1,52 @@
+.details_outbox{
+  min-width: 700px;
+  // min-height: 568px;
+  // max-width: 100vw;
+  // max-height: 100vh;
+  color: #404040;
+  
+  .carousel_and_info{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    // justify-content: center;
+    // flex-direction: row;
+    // flex-wrap: wrap;
+    padding: 0 1rem;
+    margin: 4rem;
+    
+    .carousel_container {
+      padding: 1rem 1rem;
+      // max-width: 50vw;
+      justify-content: center;
+      .carousel-item{
+        .carousel-image {
+          // max-width: 50vw;
+          width: 100%;
+        }
+      } 
+    }
+
+    .item_info_outbox{
+      padding: 1rem 1rem;
+      // min-width: 50vw;
+      // max-width: 40%;
+      max-width: 500px;
+      text-align: justify;
+      .seller {
+        text-transform: uppercase;
+      }
+      .btns{
+        // text-align: center;
+        button {
+          color: white;
+          background-color: #801f24;
+          border: none;
+          margin: 2rem 2rem 0 0;
+          width: 10vw;
+        }
+      }
+      
+    }
+
+  }
+}
