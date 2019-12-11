@@ -1,18 +1,14 @@
 .upload_outbox {
-  font-family: Optima, sans-serif;
-  min-width: 780px;
-  // min-height: 60vh;
-  // max-width: 100vw;
-  // max-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  min-width: 700px;
   
   .form-outbox {
     display: flex;
     justify-content: center;
-    margin-top: 18vh;
-    // max-width: 100%;
+    margin: 10vh 0;
+    color: #404040;
     
     form {
-      width: 65%;
       justify-content: center;
 
       .available {
@@ -30,6 +26,10 @@
           border-radius: .25rem;
           border: 1px solid #ced4da;
         }
+      }
+      .submitbtn{
+        background-color: #801f24;
+        border: none;
       }
     }
   }

@@ -40,11 +40,18 @@ export const addItem = (item, history) => async dispatch => {
 }; 
 
 export const getAllItems = () => async dispatch => {
-  const res = await axios.get("https://my-json-server.typicode.com/kimsoojee/demo/items")
-  dispatch({
-    type: GET_ALL_ITEMS,
-    payload: res.data
-  })
+  // const res = await axios.get("https://my-json-server.typicode.com/kimsoojee/demo/items")
+  var db = openDatabase("db", '1.0', "My WebSQL Database", 3 * 1024 * 1024);
+  var allItems=null;
+  db.transaction(function (tx) {
+    tx.executeSql("SELECT * FROM products", [], function(tx, results) {
+      allItems = results.rows;
+      dispatch({
+        type: GET_ALL_ITEMS,
+        payload: allItems
+      })
+    });
+  }); 
 }
 
 export const filterItemBySearch = (input) => {
@@ -77,4 +84,18 @@ export const getItemInfo = (id) => {
   return (dispatch, getState) => {
     dispatch({type: 'GET_ITEM_INFO', id})
   }
+}
+
+export const getItemDetail = (id) => dispatch => {
+  var db = openDatabase("db", '1.0', "My WebSQL Database", 3 * 1024 * 1024);
+  var detail=null;
+  db.transaction(function (tx) {
+    tx.executeSql(`SELECT * FROM products WHERE id="${id}"`, [], function(tx, results) {
+      detail = results.rows;
+      dispatch({
+        type: 'GET_ITEM_DETAIL',
+        payload: detail
+      })
+    });
+  }); 
 }

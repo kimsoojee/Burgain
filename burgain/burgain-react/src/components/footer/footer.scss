@@ -2,13 +2,45 @@ footer {
   min-width: 700px;
   background-color: #801f24;
   display: flex;
-  justify-content: space-around;
-  .col{
-    width: 10rem;
-    padding: 0.5rem;
-    color: white;
-    a {
-      color: white;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+
+  .row {
+    margin-left: 5vw;
+    min-width: 180px;
+    font-size: small;
+    .col{
+      display: flex;
+      flex-direction: column;
+      // padding: 0.5rem;
+      // color: white;
+      padding: 2rem 0;
+      a {
+        color: white;
+      }
     }
+  }
+  .subscribe{
+    // display: flex;
+    margin: auto;
+    span{
+      font-size: 0.8rem;
+    }
+    input {
+      background-color: #801f24;
+      color: white;
+      &::-webkit-input-placeholder{
+        color: white;
+      }
+    }
+    button{
+      color: #801f24;
+      background-color: white;
+      border-color: white;
+    }
+  }
+  .name{
+    margin: auto 1rem;
+    font-size: x-small;
   }
 }

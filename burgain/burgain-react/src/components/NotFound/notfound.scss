@@ -1,0 +1,22 @@
+.error{
+  min-width: 700px;
+  display: flex;
+  justify-content: center;
+  margin: 5rem 0;
+  .oof{
+    img{
+      width: 20rem;
+    }
+    margin: 1rem;
+  }
+  .msg{
+    color: #404040;
+    margin: auto 0;
+    h1{
+      font-size: 6rem;
+    }
+    h4{
+      font-size: 1.5rem;
+    }
+  }
+}

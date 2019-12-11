@@ -26,7 +26,16 @@ class SignIn extends Component {
       email: this.state.email+"@bu.edu",
       password: this.state.password
     };
-    this.props.signIn(SigninRequest);
+    // this.props.signIn(SigninRequest);
+    var db = openDatabase("db", '1.0', "My WebSQL Database", 3 * 1024 * 1024);
+
+    db.transaction(function (tx) {
+    tx.executeSql(`SELECT * FROM customer where email="${SigninRequest.email}" AND password="${SigninRequest.password}"`, [], function(tx, results) {
+      if(results.rows.length > 0) {
+          localStorage.setItem("currentUser", JSON.stringify(results.rows[0]));
+      }
+    });
+  });
     this.props.setShow(false)
   }
 
