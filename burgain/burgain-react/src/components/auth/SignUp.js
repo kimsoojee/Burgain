@@ -4,6 +4,7 @@ import { signUp } from "../../redux/action/authAction";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
+
 class SignUp extends Component {
   constructor() {
     super();
@@ -26,8 +27,12 @@ class SignUp extends Component {
       lastName: this.state.lastName,
       password: this.state.password,
     };
-    console.log(newUser);
-    this.props.signUp(newUser, this.props.history);
+    // this.props.signUp(newUser, this.props.history);
+    var db = openDatabase("db", '1.0', "My WebSQL Database", 3 * 1024 * 1024);
+    db.transaction(function (tx) {
+      tx.executeSql('insert into customer (firstname, lastname, email, password) values (?,?,?,?)',[newUser.firstName, newUser.lastName, newUser.email, newUser.password]);
+    }); 
+    this.props.setShow(false);
   }
 
   handleChange = (e) => {
@@ -36,7 +41,7 @@ class SignUp extends Component {
 
   componentDidMount() {
     if (this.props.auth.validToken) {
-      this.props.history.push("/");
+      this.props.history.push("/onlineShop");
     }
   }
 
@@ -49,8 +54,9 @@ class SignUp extends Component {
   render() {
     const { setShow } = this.props;
     return (
-      <div className="signin_outbox">
+      <div className="signup_outbox">
         <Modal.Body>
+          <div className="signuptext">Sign up to get all of these deals now!</div>
           <Form  className="white" onSubmit={this.handleSubmit} >
             <Form.Row>
               <Form.Group as={Col} controlId="lastName">
@@ -78,9 +84,13 @@ class SignUp extends Component {
             
             <Form.Group className="input-field">
               <Button className="cl" onClick={() => setShow(false) } >Close</Button>
-              <Button className="signin_button" type="submit" >Sign Up</Button>
+              <Button className="signin_button" type="submit" onClick={this.handleSubmit}  >Sign Up</Button>
             </Form.Group>
           </Form> 
+          <div className="agree">
+            By signing up you agree to our
+            <br/> <a href='/onlineShop/burgain'>Terms and Conditions</a>
+          </div>
         </Modal.Body>     
       </div>
     );

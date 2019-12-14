@@ -22,7 +22,7 @@ class Profile extends Component {
         <div className="row card-outbox">
           <div className="col-lg-4 col-md-3 col-centered section1">
             <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="default" />
-                <h2><p className="card-title"> {user[0].firstName + " " + user[0].lastName}  </p></h2>
+                <h2><p className="card-title"> {user.firstname + " " + user.lastname}  </p></h2>
                 {/* <h5><p className="card-subtitle"> "Gender" </p></h5>
                 <h5><p className="card-subtitle"> College </p></h5>
                 <h5><p className="card-subtitle"> Graduation Year </p></h5> */}
@@ -30,28 +30,28 @@ class Profile extends Component {
           <div className="col-lg-4 col-md-3 col-centered section2">
             <Tabs defaultActiveKey="connections" transition={false} id="noanim-tab-example">
               <Tab eventKey="connections" title="Connections">
-                blah blah blah
+                
               </Tab>
               <Tab eventKey="selling items" title="Selling Items" className="myItem">
-                {this.props.item.map((my,index) => 
+                {/* {this.props.item.map((my,index) => 
                   <Card key={index} >
                     <Link to={'/' + my.id} className="link">
                       <Card.Img variant="top" src={my.img} style={{ width: '8rem' }}/>
                       <Card.Body > <Card.Text>{my.title}</Card.Text> </Card.Body>
                     </Link>
                   </Card>
-                )}
+                )} */}
               </Tab>
-              {(this.props.location.pathname.split('/').slice(-1)[0] == user[0].id) && 
+              {(this.props.location.pathname.split('/').slice(-1)[0] == user.id) && 
                 <Tab eventKey="favorite" title="Favorite" className="favorite">
-                  {this.props.item.map((fav,index) => 
+                  {/* {this.props.item.map((fav,index) => 
                     <Card key={index} >
                       <Link to={'/' + fav.id} className="link">
                         <Card.Img variant="top" src={fav.img} style={{ width: '8rem' }}/>
                         <Card.Body > <Card.Text>{fav.title}</Card.Text> </Card.Body>
                       </Link>
                     </Card>
-                  )}
+                  )} */}
                 </Tab>
               }
             </Tabs>

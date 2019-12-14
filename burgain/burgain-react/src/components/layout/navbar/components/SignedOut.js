@@ -10,11 +10,11 @@ const SignedOut = () => {
   return (
     <div className="signedout-outbox">
       <div className="notUser">
-        <Button onClick={() => setShow(true)}>
-          Sign in
-        </Button>
+        <a onClick={() => setShow(true)}>
+          <img src={require('../../../imgages/signin.png')} alt="signin" />
+        </a>
 
-        <Modal show={show} animation={false} onHide={() => setShow(false)} >
+        <Modal id="code" show={show} animation={false} onHide={() => setShow(false)} >
           <Tabs defaultActiveKey="signin" id="loginTab" >
             <Tab eventKey="signin" title="Sign In" >
               <SignIn setShow={setShow} />

@@ -3,7 +3,7 @@ import { Form, InputGroup, Button, Col } from 'react-bootstrap';
 import { addItem } from '../../redux/action/itemAction';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-// import UploadItemForm from './UploadItemForm';
+import SignedOut from '../layout/navbar/components/SignedOut';
 import DayPickerInput from 'react-day-picker/DayPickerInput'; import 'react-day-picker/lib/style.css';
 import './styles/uploaditem.scss';
 
@@ -18,7 +18,7 @@ class UploadItem extends Component {
       imagePreviewUrl: [],
       price: '',
       location: '',
-      description: '',
+      description: "",
       category: '',
       seller: { firstName: '', lastName: '', email: '', password: '' },
       periodFrom: '',
@@ -66,7 +66,6 @@ class UploadItem extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const newItem = {
-      id: this.state.id,
       title: this.state.title,
       // img: this.state.img,
       img: this.state.imagePreviewUrl,
@@ -74,22 +73,22 @@ class UploadItem extends Component {
       location: this.state.location,
       description: this.state.discription,
       category: this.state.category,
-      seller: { firstName: '', lastName: '', email: '', password: '' },
+      // seller: "",
       periodFrom: this.state.periodFrom,
       periodTo: this.state.periodTo,
       postedDate: this.state.postedDate,
       isSold: false,
     };
-    this.props.addItem(newItem, this.props.history)
+    // this.props.addItem(newItem, this.props.history)
+    if (localStorage.getItem("currentUser")){
+      var db = openDatabase("db", '1.0', "My WebSQL Database", 3 * 1024 * 1024);
+
+      db.transaction(function (tx) {
+      tx.executeSql('insert into products (title, img, price, description, location, category) values (?,?,?,?,?,?)',[newItem.title, newItem.img, newItem.price, newItem.description, newItem.location, newItem.category]);
+    });
+    }
+    this.props.history.push('/onlineShop')
   }
-
-  // componentDidUpdate(prevProps)
-  // {
-  //   if (prevProps.auth){
-  //     this.fetchData(this.props.auth);
-  //   }
-  // }
-
 
   render() {
     const { imagePreviewUrl, periodFrom, periodTo, postedDate } = this.state;
@@ -102,7 +101,7 @@ class UploadItem extends Component {
 
             {/* IMAGES */}
             <Form.Group controlId="multiple-photos" >
-              <Form.Control type="file" multiple onChange={this.handleImageChange} name="file" className="upload-files" />
+              <Form.Control type="file" multiple onChange={this.handleImageChange} name="file" className="upload-files" required={true} />
               <div className="imagePreview">
                 {imagePreviewUrl.map(
                   function (preview, i) { return <img key={i} src={preview} height={100} alt="preview" /> })}
@@ -113,6 +112,7 @@ class UploadItem extends Component {
             <Form.Group controlId="title">
               <Form.Control type="text" placeholder="Title" onChange={this.handleChange} />
             </Form.Group>
+
             {/* DESCRIPTION */}
             <Form.Group controlId="description">
               <Form.Control as="textarea" rows="3" placeholder="Describe Your Item" onChange={this.handleChange} />
@@ -121,9 +121,11 @@ class UploadItem extends Component {
             {/* AVAILABLE PERIOD */}
             <Form.Row>
               <Form.Group as={Col} controlId="period">
-                <>Available(opt):</>
+                <span>Available(opt):</span>
+                {/* <InputGroup> */}
                 <DayPickerInput dayPickerProps={{ todayButton: 'Today' }} onDayChange={this.handleFromChange} placeholder="From" />
                 <DayPickerInput onDayChange={this.handleToChange} placeholder="To" />
+                {/* </InputGroup> */}
                 {periodFrom && (periodFrom >= postedDate ? null : <p> Invalid Date </p>)}
                 {periodTo && (periodTo > periodFrom ? null : <> Invalid Date </>)}
               </Form.Group>
@@ -132,12 +134,13 @@ class UploadItem extends Component {
             {/* CATEGORY */}
             <Form.Group controlId="category" >
               <Form.Control as="select" onChange={this.handleChange} required={true} >
-                <option value="" >Select a Category</option>
-                <option>Books</option>
-                <option>Clothing</option>
-                <option>Electronics</option>
-                <option>Free</option>
-                <option>General</option>
+                <option value="" >Select a Category </option>
+                <option value="apparel">Apparel</option>
+                <option value="books">Books</option>
+                <option value="electronics">Electronics</option>
+                <option value="free">Free</option>
+                <option value="furniture">Furniture</option>
+                <option value="general">General</option>
               </Form.Control>
             </Form.Group>
 
@@ -162,7 +165,7 @@ class UploadItem extends Component {
               </Form.Control>
             </Form.Group>
 
-            <Button type="submit" > Upload </Button>
+            <Button className="submitbtn" type="submit" > Upload </Button>
           </Form>
 
         </div>

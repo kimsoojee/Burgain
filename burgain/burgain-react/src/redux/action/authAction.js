@@ -45,6 +45,7 @@ export const signUp = (newUser, history) => async dispatch => {
 export const signIn = SigninRequest => async dispatch => {
   const url = "https://my-json-server.typicode.com/kimsoojee/demo/users?email=" + SigninRequest.email
   const res = await axios.get(url)
+  
   try {
     const { token } = res.data;
     // localStorage.setItem("currentUser", token);

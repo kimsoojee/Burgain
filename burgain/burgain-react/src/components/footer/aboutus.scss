@@ -1,0 +1,42 @@
+.burgain-outbox{
+  font-family: 'Poppins', sans-serif;
+  color: #404040;
+  display: flex;
+  min-width: 700px;
+  margin: auto;
+  padding: 2rem;
+  
+  .img1{
+    display: flex;
+    flex-direction: column-reverse;
+    img{
+      width: 10vw;;
+    }
+  }
+
+  .texts{
+    h3, p, span{
+      font-weight: bold;
+    }
+    p, span{
+      font-size: small;
+    }
+    margin: 0 2rem;
+    .faq, .term {
+      margin-bottom: 1rem;
+    }
+    a{
+      display: flex;
+      color: #801f24;
+      font-weight: bold;
+    }
+  }
+
+  .img2{
+    display: flex;
+    flex-direction: column-reverse;
+    img{
+      width: 25vw;
+    }
+  }
+}

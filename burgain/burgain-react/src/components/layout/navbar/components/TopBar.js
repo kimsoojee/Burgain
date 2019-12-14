@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 import './styles/topbar.scss'
 import { signOut } from "../../../../redux/action/authAction";
+import { logicalExpression } from '@babel/types';
 
 
 class TopBar extends Component {
@@ -33,7 +34,7 @@ class TopBar extends Component {
         <div className="logo">
            <a href="/onlineShop">
             <img className="pic"
-              src="https://upload.wikimedia.org/wikipedia/en/thumb/1/15/Boston_University_Terriers_logo.svg/1200px-Boston_University_Terriers_logo.svg.png"
+              src={require('../../../imgages/BURGAINlogo.jpg')}
               alt="logo"/>
           </a>
         </div>
@@ -47,11 +48,11 @@ class TopBar extends Component {
         
         <div className="sell-outbox">
           <div className="sell">
-            <Button> <a href="/upload"> Sell </a> </Button>
+            <a href="/onlineShop/upload"> <img src={require('../../../imgages/sell.png')} alt="sell" /> </a>
           </div>
         </div>
         
-        {this.props.auth.validToken ? (<div className="user"> <SignedIn props={this.props} /> </div>) : (<div className="user"> <SignedOut /> </div> )}
+        {this.props.auth.validToken ? (<div className="user"> <SignedIn props={this.props}/> </div>) : (<div className="user"> <SignedOut  /> </div> )}
         {/* {this.props.auth.user==={} && <div className="user"> <SignedOut /> </div>} */}        
       </div>
     );

@@ -70,19 +70,27 @@ button {
   border: none;
   padding: 0.5rem 0;
   background-color: transparent;
+  color: #404040;
+  font-family: 'Poppins', sans-serif;
 }
 button:focus {
   outline: none;
+}
+button:hover{
+  color: black;
+  font-weight: bold;
 }
 
 .menu-all {
   padding: 0.5rem 0;
   text-decoration: none;
-  color: black;
+  color: #404040;
+  font-family: 'Poppins', sans-serif;
 }
 .menu-all:hover {
   color: black;
   text-decoration: none;
+  font-weight: bold;
 }
 .menu-all:focus {
   outline: none;

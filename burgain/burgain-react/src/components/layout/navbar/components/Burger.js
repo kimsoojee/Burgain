@@ -23,12 +23,31 @@ class Burger extends Component {
   render() {
     return (
       <Menu isOpen={this.state.menuOpen} onStateChange={(state) => this.handleStateChange(state)}>
-        <a id="all" className="menu-all" href="/" >All</a>
-        <button id="books" className="menu-item" onClick={this.handleClick.bind(this, "books")} >Books</button>
-        <button id="clothing" className="menu-item" onClick={this.handleClick.bind(this, "clothing")}>Clothing</button>
-        <button id="electronics" className="menu-item" onClick={this.handleClick.bind(this, "electronics")}>Electronics</button>
-        <button id="free" className="menu-item" onClick={this.handleClick.bind(this, "free")}>Free</button>
-        <button id="general" className="menu-item" onClick={this.handleClick.bind(this, "general")}>General</button>
+        <a id="all" className="menu-all" href="/onlineShop" >All</a>
+        <button id="apparel" className="menu-item" onClick={this.handleClick.bind(this, "apparel")}>
+            <img src={require('../../../imgages/apparel.png') } alt="apparel" width={20} />
+            <span style={{paddingLeft: '1rem'}} >Apparel</span> 
+        </button>
+        <button id="books" className="menu-item" onClick={this.handleClick.bind(this, "books")} > 
+            <img src={require('../../../imgages/books.png') } alt="books" width={15} />
+            <span style={{paddingLeft: '1.3rem'}} >Books</span> 
+        </button>
+        <button id="electronics" className="menu-item" onClick={this.handleClick.bind(this, "electronics")}>
+            <img src={require('../../../imgages/electronics.png') } alt="electronics" width={20} /> 
+            <span style={{paddingLeft: '1rem'}} >Electronics</span> 
+        </button>
+        <button id="free" className="menu-item" onClick={this.handleClick.bind(this, "free")}>
+            <img src={require('../../../imgages/free.png') } alt="free" width={10} /> 
+            <span style={{paddingLeft: '1.7rem'}} >Free</span> 
+        </button>
+        <button id="furniture" className="menu-item" onClick={this.handleClick.bind(this, "furniture")}>
+            <img src={require('../../../imgages/furniture.png') } alt="furniture" width={20} /> 
+            <span style={{paddingLeft: '1rem'}} >Furniture </span>
+        </button>
+        <button id="general" className="menu-item" onClick={this.handleClick.bind(this, "general")}>
+          <img src={require('../../../imgages/general.png') } alt="general" width={20} /> 
+          <span style={{paddingLeft: '1rem'}} >General</span> 
+        </button>
       </Menu>
     )
   }

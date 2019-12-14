@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Button, Modal} from 'react-bootstrap';
+import { FormControl, Button, InputGroup } from 'react-bootstrap';
 import './footer.scss';
 
 const Footer = () => {
@@ -7,15 +7,23 @@ const Footer = () => {
     <footer>
       <div className="row">
         <div className="col">
-          <a href="/" >Home</a>
-          <h6>Features</h6>
-          <h6>Contact us</h6>
+          <a href="/onlineShop" >Home</a>
+          <a href="/onlineShop/burgain">FAQ</a>
         </div>
         <div className="col">
-          <h6>About</h6>
-          <h6>FAQ</h6>
-          <h6>Subscribe</h6>
+          <a href="/onlineShop/burgain" >About</a>
+          <a>Contact us</a>
         </div>
+      </div>
+      <div className="subscribe">
+        <span>get lastest updates!</span>
+        <InputGroup>
+          <FormControl type="text" placeholder="Email Address" />
+          <Button type="submit" > Subscribe </Button>
+        </InputGroup>
+      </div>
+      <div className="name">
+        ©BURGAIN
       </div>
     </footer>
   )

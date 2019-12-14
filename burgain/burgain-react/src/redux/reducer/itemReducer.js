@@ -1,13 +1,12 @@
 import { GET_ALL_ITEMS } from '../action/types'
 
 const initialState = {
-  // items: testitems,
   items: [],
   searched: null,
   categorized: null,
   newItem: [],
   favorites: [],
-  itemInfo: null,
+  itemInfo: [],
   allUsers:[],
 }
 
@@ -18,8 +17,17 @@ const itemReducer = (state = initialState, action) => {
         ...state,
         items: action.payload
       }
+    case 'GET_ITEM_DETAIL':
+      return {
+        ...state,
+        itemInfo: action.payload
+      }
     case 'FILTER_ITEM_BY_SEARCH':
-      let search = state.items.filter(item => {
+      let listt = []
+      for (var i=0; i<state.items.length; i++){
+        listt.push(state.items[i])
+      }
+      let search = listt.filter(item => {
         return item.title.toLowerCase().includes(action.input)
       });
       return {
@@ -27,7 +35,11 @@ const itemReducer = (state = initialState, action) => {
         searched: search
       }
     case 'FILTER_ITEM_BY_CATEGORY':
-      let category = state.items.filter(item => {
+      let list = []
+      for (var i=0; i<state.items.length; i++){
+        list.push(state.items[i])
+      }
+      let category = list.filter(item => {
         return item.category === action.Category
       });
       return {

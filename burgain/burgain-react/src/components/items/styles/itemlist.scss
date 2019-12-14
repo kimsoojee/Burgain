@@ -1,15 +1,17 @@
 .card {
   height: 100%;
+  font-family: 'Poppins', sans-serif;
   .link{
     text-decoration-line: none;
     height: 100%;
     .card-title{
-      font-size: 17px;
-      color: black;
+      font-size: 0.9rem;
+      color: #404040;
+  
     }
     .card-subtitle{
-      font-size: 14px;
-      color: rgb(80, 80, 80)
+      font-size: 0.8rem;
+      color: #606060
     }
   }
 }
